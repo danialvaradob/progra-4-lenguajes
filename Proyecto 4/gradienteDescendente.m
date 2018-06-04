@@ -10,7 +10,8 @@ for iter = 1:num_iters
     % ====================== SU CÓDIGO ======================
     % Instrucciones: Ejecute actualización de parámetros
     %
-    % Nota: Para debuggear podría ir imprimiendo el costo, con los parámetros encontrados en cada iteración
+    % Nota: Para debuggear podría ir imprimiendo el costo, 
+    % con los parámetros encontrados en cada iteración
     %
 
 
