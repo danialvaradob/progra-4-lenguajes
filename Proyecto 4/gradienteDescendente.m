@@ -14,8 +14,18 @@ for iter = 1:num_iters
     % con los parámetros encontrados en cada iteración
     %
 
-
-
+    temp0 = theta(1);
+    temp1 = theta(2); 
+    
+    temp0 = (temp0- alpha * costo(X, y, theta));
+    temp1 = (temp1 - alpha * costo(X, y, theta));
+    
+    if (theta(1) == temp0 || theta(2) == temp1)
+      break;
+    endif
+      theta(1) = temp0;
+      theta(2) = temp1;
+    
 
 
 
