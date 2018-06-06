@@ -19,8 +19,8 @@ for iter = 1:num_iters
     
     
     x = X(:,2);
-    temp0 = theta(1) - alpha * (1/m) * sum((theta(1) + (theta(2)*x)) - y)
-    temp1 = theta(2) - alpha * (1/m) * sum(((theta(1) + (theta(2)*x)) - y).*x)
+    temp0 = theta(1) - alpha * (1/m) * sum((theta(1) + (theta(2)*x)) - y);
+    temp1 = theta(2) - alpha * (1/m) * sum(((theta(1) + (theta(2)*x)) - y).*x);
     theta(1) = temp0;
     theta(2) = temp1;
     
