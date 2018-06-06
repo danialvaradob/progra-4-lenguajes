@@ -6,6 +6,7 @@ theta = zeros(size(X, 2), 1);
 % ====================== SU CÓDIGO ======================
 
 
+theta = pinv(X'*X)*X'*y;
 
 
 

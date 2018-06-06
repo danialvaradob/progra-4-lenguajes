@@ -53,7 +53,21 @@ fprintf('\n');
 % Estimar el precio de una casa de 1650 pies cuadrados y 3 cuartos
 % ====================== SU CÓDIGO ======================
 % recordar que nuestros datos están normalizados
-price = 0; % hay que cambiar esto
+
+
+
+mu = zeros(1, size([1650,2], 2));
+sigma = zeros(1, size([1650,2], 2));
+
+mu    = mean([1650,2])
+sigma = std([1650,2])
+
+size = ((1650-mu)/sigma);
+rooms = pow2((3-mu)/sigma);
+
+price = [1 size rooms] * theta;
+
+
 
 
 % ============================================================
@@ -89,11 +103,47 @@ fprintf('\n');
 
 % Estimar el precio de una casa de 1650 pies cuadrados y 3 cuartos
 % ====================== SU CÓDIGO ======================
-price = 0; % cambiar esto
+
+price = [1 1650 3] * theta;
+
+
 
 
 % ============================================================
 
 fprintf(['Casa -  1650 pies cuadrados, 3 cuartos ' ...
          '(usando ecuación normal):\n $%f\n'], price);%modificar código para poder predecir
+         
+         
+% Grid over sobre el cual calculamos J
+theta0_vals = linspace(-10, 10, 100);
+theta1_vals = linspace(-1, 4, 100);
+
+% inicializar los valores J_vals en una matriz de 0s
+J_vals = zeros(length(theta0_vals), length(theta1_vals));
+
+% llenar J_vals
+for i = 1:length(theta0_vals)
+    for j = 1:length(theta1_vals)
+	  t = [theta0_vals(i); theta1_vals(j)];    
+	  J_vals(i,j) = costoMulti(X, y, t);
+    end
+end
+
+
+% Para graficar
+J_vals = J_vals';
+% gráfico de superficie
+figure;
+surf(theta0_vals, theta1_vals, J_vals)
+xlabel('\theta_0'); ylabel('\theta_1');
+
+% gráfico de contorno
+figure;
+
+contour(theta0_vals, theta1_vals, J_vals, logspace(-2, 3, 20))
+xlabel('\theta_0'); ylabel('\theta_1');
+hold on;
+plot(theta(1), theta(2), 'rx', 'MarkerSize', 10, 'LineWidth', 2);
+pause;
 

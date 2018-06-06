@@ -4,6 +4,7 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 
 
 X_norm = X;
+X_norm
 mu = zeros(1, size(X, 2));
 sigma = zeros(1, size(X, 2));
 
@@ -17,7 +18,16 @@ sigma = zeros(1, size(X, 2));
 % Nota: octave tiene la funciones mean y std que le pueden ser útiles
 %       
 
+mu    = mean(X)
+sigma = std(X)
 
+indicies = 1:size(X, 2);
+
+for i = indicies,
+  XminusMu  = X(:, i) - mu(i);
+  X_norm(:, i) = XminusMu / sigma(i);
+  X_norm;
+end
 
 
 
